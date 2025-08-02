@@ -17,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "token-server": "node token-server.js",
+    "clean": "rm -f plaid-tokens.json && echo 'Plaid tokens cleared'"
   },
   "eslintConfig": {
     "extends": [

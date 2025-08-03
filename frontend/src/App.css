@@ -1,38 +1,159 @@
-.App {
-  text-align: center;
+/* Base Styles */
+:root {
+  --bg-color: #0E0E0E;
+  --text-color: #FFFFFF;
+  --accent-cyan: #00E7FF;
+  --accent-magenta: #FF1F8E;
+  --accent-lime: #C9FF00;
+  --card-bg: rgba(20, 20, 20, 0.8);
+  --card-border: rgba(0, 231, 255, 0.2);
+  --card-glow: 0 0 20px rgba(0, 231, 255, 0.3);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  overflow-x: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
+/* App Layout */
+.app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  background: radial-gradient(
+    circle at top right,
+    rgba(0, 231, 255, 0.1) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at bottom left,
+    rgba(201, 255, 0, 0.1) 0%,
+    transparent 50%
+  ),
+  var(--bg-color);
 }
 
-.App-link {
-  color: #61dafb;
+.app-header {
+  text-align: center;
+  padding: 20px 0 30px;
+  position: relative;
+  z-index: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.app-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.tagline {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(0, 231, 255, 0.1);
+  margin-top: auto;
+}
+
+/* Animations */
+@keyframes gradientPulse {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .app {
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .app-header h1 {
+    font-size: 1.8rem;
   }
+  
+  .tagline {
+    font-size: 0.9rem;
+  }
+}
+
+/* Fix for WebKit browsers */
+@supports (-webkit-touch-callout: none) {
+  .app {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Ensure proper text rendering */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 231, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
 }
